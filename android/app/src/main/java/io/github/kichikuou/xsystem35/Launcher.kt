@@ -234,7 +234,7 @@ class Launcher private constructor(private val rootDir: File) {
             val name = File(path).name
 
             specialResources[name.toLowerCase(Locale.US)]?.let {
-                grb.appendln("$it $path")
+                grb.appendLine("$it $path")
                 return
             }
             aldRegex.matchEntire(name)?.let {
@@ -246,7 +246,7 @@ class Launcher private constructor(private val rootDir: File) {
                 }
                 val id = it.groupValues[3].toUpperCase(Locale.US)
                 if (type != null) {
-                    grb.appendln("$type$id $path")
+                    grb.appendLine("$type$id $path")
                     basename = it.groupValues[1]
                 }
             }
@@ -261,7 +261,7 @@ class Launcher private constructor(private val rootDir: File) {
 
         fun write(outDir: File) {
             for (id in 'A' .. 'Z') {
-                grb.appendln("Save$id ../save/${basename}s${id.toLowerCase()}.asd")
+                grb.appendLine("Save$id ../save/${basename}s${id.toLowerCase()}.asd")
             }
             val gr = grb.toString()
             Log.i("xsystem35.gr", gr)
